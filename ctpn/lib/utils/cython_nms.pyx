@@ -1,10 +1,11 @@
+# cython: language_level=3
 # --------------------------------------------------------
 # Fast R-CNN
 # Copyright (c) 2015 Microsoft
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Ross Girshick
 # --------------------------------------------------------
-
+# cython: language_level=3
 import numpy as np
 cimport numpy as np
 

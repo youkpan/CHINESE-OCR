@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(1, "./crnn")
+sys.path.insert(1, "./crnn/models")
 import torch.nn as nn
 import utils
 

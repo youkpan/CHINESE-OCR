@@ -6,7 +6,7 @@ import cv2
 import numpy as np
 from PIL import Image
 import sys
-
+import time
 sys.path.append("ocr")
 from angle.predict import predict as angle_detect  ##文字方向检测
 
@@ -110,12 +110,18 @@ def model(img, model='keras', adjust=False, detectAngle=False):
         elif angle == 270:
             im = im.transpose(Image.ROTATE_270)
         img = np.array(im)
+    t = time.time()
     # 进行图像中的文字区域的识别
     text_recs, tmp, img=text_detect(img)
+    print("Itext_detect time:{}s".format(time.time() - t))
     # 识别区域排列
+    t = time.time()
     text_recs = sort_box(text_recs)
+    print("sort_box time:{}s".format(time.time() - t))
     # 
+    t = time.time()
     result = crnnRec(img, text_recs, model, adjust=adjust)
+    print("crnnRec time:{}s".format(time.time() - t))
     return result, tmp, angle
 
 
